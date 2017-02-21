@@ -6,7 +6,6 @@ import android.util.Log;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import br.gbizotto.backgroundcommunication.MainApp;
 
 /**
  * Created by Gabriela on 21/02/2017.

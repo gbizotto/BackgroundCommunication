@@ -21,8 +21,8 @@ public class PeriodicExecution implements Runnable {
 
     @Override
     public void run() {
-        Intent intent = new Intent(context, CommunicationService.class);
-        intent.putExtra(context.getString(R.string.intent_communication), backgroundCommunication);
-        context.startService(intent);
+        Intent intentService = new Intent(context, CommunicationService.class);
+        intentService.putExtra(context.getString(R.string.intent_communication), backgroundCommunication);
+        context.startService(intentService);
     }
 }
