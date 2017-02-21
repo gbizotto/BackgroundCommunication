@@ -22,7 +22,7 @@ public abstract class BackgroundCommunicationActions {
 
         ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(1);
 
-        Log.v(MainApp.class.getSimpleName(), "Agendando task");
+        Log.v(BackgroundCommunicationActions.class.getSimpleName(), "Agendando task");
         executor.scheduleWithFixedDelay(new PeriodicExecution(context, backgroundCommunication), initialDelay, delayBetweenExecutions, timeUnit);
 
         return executor;
