@@ -1,6 +1,9 @@
 package br.gbizotto.backgroundcommunication;
 
 import android.app.Application;
+
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+
 import br.gbizotto.backgroundcommunication.weather.WeatherCommunication;
 
 /**
@@ -9,9 +12,19 @@ import br.gbizotto.backgroundcommunication.weather.WeatherCommunication;
 
 public class MainApp extends Application {
 
+    ScheduledThreadPoolExecutor mWeatherExecutor;
+
     @Override
     public void onCreate() {
+        mWeatherExecutor = new WeatherCommunication().schedule(this);
+    }
 
-        new WeatherCommunication().schedule(this);
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+
+        if (mWeatherExecutor != null) {
+            mWeatherExecutor.shutdownNow();
+        }
     }
 }

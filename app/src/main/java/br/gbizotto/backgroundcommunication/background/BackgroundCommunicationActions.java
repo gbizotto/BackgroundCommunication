@@ -6,7 +6,6 @@ import android.util.Log;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import br.gbizotto.backgroundcommunication.BuildConfig;
 import br.gbizotto.backgroundcommunication.MainApp;
 
 /**
@@ -15,14 +14,17 @@ import br.gbizotto.backgroundcommunication.MainApp;
 
 public abstract class BackgroundCommunicationActions {
 
-    protected void schedule(Context context, BackgroundCommunication backgroundCommunication) {
+    protected ScheduledThreadPoolExecutor schedule(Context context,
+                                                   BackgroundCommunication backgroundCommunication,
+                                                   long initialDelay,
+                                                   long delayBetweenExecutions,
+                                                   TimeUnit timeUnit) {
+
         ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(1);
 
-        if (BuildConfig.DEBUG){
-            Log.v(MainApp.class.getSimpleName(), "Agendando task");
-            executor.scheduleWithFixedDelay(new PeriodicExecution(context, backgroundCommunication), 0, 5, TimeUnit.MINUTES);
-        }else{
-            executor.scheduleWithFixedDelay(new PeriodicExecution(context, backgroundCommunication), 1, 1, TimeUnit.HOURS);
-        }
+        Log.v(MainApp.class.getSimpleName(), "Agendando task");
+        executor.scheduleWithFixedDelay(new PeriodicExecution(context, backgroundCommunication), initialDelay, delayBetweenExecutions, timeUnit);
+
+        return executor;
     }
 }

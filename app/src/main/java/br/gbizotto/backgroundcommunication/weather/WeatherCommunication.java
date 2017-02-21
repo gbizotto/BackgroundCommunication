@@ -3,6 +3,9 @@ package br.gbizotto.backgroundcommunication.weather;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 import br.gbizotto.backgroundcommunication.MainActivity;
 import br.gbizotto.backgroundcommunication.background.BackgroundCommunicationActions;
 import br.gbizotto.backgroundcommunication.weather.api.DarkSkyApi;
@@ -53,7 +56,7 @@ public class WeatherCommunication extends BackgroundCommunicationActions impleme
         });
     }
 
-    public void schedule(Context context) {
-        super.schedule(context, this);
+    public ScheduledThreadPoolExecutor schedule(Context context) {
+        return super.schedule(context, this, 0, 5, TimeUnit.MINUTES);
     }
 }
