@@ -1,10 +1,10 @@
 package br.gbizotto.backgroundcommunication.weather;
 
+import android.content.Context;
 import android.util.Log;
 
-import java.io.Serializable;
-
 import br.gbizotto.backgroundcommunication.MainActivity;
+import br.gbizotto.backgroundcommunication.background.BackgroundCommunicationActions;
 import br.gbizotto.backgroundcommunication.weather.api.DarkSkyApi;
 import br.gbizotto.backgroundcommunication.background.BackgroundCommunication;
 import br.gbizotto.backgroundcommunication.background.CommunicationService;
@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Gabriela on 21/02/2017.
  */
 
-public class WeatherCommunication implements BackgroundCommunication, Serializable {
+public class WeatherCommunication extends BackgroundCommunicationActions implements BackgroundCommunication {
 
     private static final String BASE_URL = "https://api.darksky.net/";
     private static final String API_KEY = "e890138405ec89f522a93c2749773367";
@@ -51,5 +51,9 @@ public class WeatherCommunication implements BackgroundCommunication, Serializab
                 Log.v(MainActivity.class.getSimpleName(),"Falhou!");
             }
         });
+    }
+
+    public void schedule(Context context) {
+        super.schedule(context, this);
     }
 }
