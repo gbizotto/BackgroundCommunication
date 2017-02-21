@@ -5,10 +5,10 @@ import android.util.Log;
 import java.io.Serializable;
 
 import br.gbizotto.backgroundcommunication.MainActivity;
-import br.gbizotto.backgroundcommunication.api.DarkSkyApi;
+import br.gbizotto.backgroundcommunication.weather.api.DarkSkyApi;
 import br.gbizotto.backgroundcommunication.background.BackgroundCommunication;
 import br.gbizotto.backgroundcommunication.background.CommunicationService;
-import br.gbizotto.backgroundcommunication.model.Forecast;
+import br.gbizotto.backgroundcommunication.weather.model.Forecast;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

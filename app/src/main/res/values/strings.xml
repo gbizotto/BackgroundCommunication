@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BackgroundCommunication</string>
+    <string name="invalid_argument">Invalid argument: intent must receive an extra that implements BackgroundCommunication.</string>
+</resources>

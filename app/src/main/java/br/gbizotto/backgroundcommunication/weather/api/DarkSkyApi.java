@@ -1,6 +1,6 @@
-package br.gbizotto.backgroundcommunication.api;
+package br.gbizotto.backgroundcommunication.weather.api;
 
-import br.gbizotto.backgroundcommunication.model.Forecast;
+import br.gbizotto.backgroundcommunication.weather.model.Forecast;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

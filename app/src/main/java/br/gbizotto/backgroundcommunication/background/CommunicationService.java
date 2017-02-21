@@ -15,14 +15,12 @@ public class CommunicationService extends IntentService {
     protected void onHandleIntent(Intent intent) {
 
         if (!intent.hasExtra(getString(R.string.intent_communication))) {
-            //FIXME create an specif exception for this
-            throw new RuntimeException();
+            throw new InvalidArgumentException(getString(R.string.invalid_argument));
         }
 
         BackgroundCommunication backgroundCommunication = (BackgroundCommunication) intent.getSerializableExtra(getString(R.string.intent_communication));
         if (backgroundCommunication == null) {
-            //FIXME create an specif exception for this
-            throw new RuntimeException();
+            throw new InvalidArgumentException(getString(R.string.invalid_argument));
         }
 
         backgroundCommunication.doCommunication();

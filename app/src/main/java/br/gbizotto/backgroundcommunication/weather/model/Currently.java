@@ -1,5 +1,5 @@
 
-package br.gbizotto.backgroundcommunication.model;
+package br.gbizotto.backgroundcommunication.weather.model;
 
 import java.util.HashMap;
 import java.util.Map;
