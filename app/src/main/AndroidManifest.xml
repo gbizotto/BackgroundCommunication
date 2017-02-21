@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.gbizotto.backgroundcommunication">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".MainApp"
         android:allowBackup="true"
@@ -18,7 +20,7 @@
         </activity>
 
         <service
-            android:name=".WeatherService"
+            android:name=".background.CommunicationService"
             android:exported="false"></service>
     </application>
 

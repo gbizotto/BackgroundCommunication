@@ -3,9 +3,13 @@ package br.gbizotto.backgroundcommunication;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import br.gbizotto.backgroundcommunication.background.CommunicationService;
+import br.gbizotto.backgroundcommunication.weather.WeatherCommunication;
 
 /**
  * Created by Gabriela on 20/02/2017.
@@ -25,7 +29,8 @@ public class MainApp extends Application {
 
             @Override
             public void run() {
-                Intent intent = new Intent(mContext, WeatherService.class);
+                Intent intent = new Intent(mContext, CommunicationService.class);
+                intent.putExtra(mContext.getString(R.string.intent_communication), new WeatherCommunication());
                 startService(intent);
             }
         }
@@ -35,7 +40,8 @@ public class MainApp extends Application {
 
         if (BuildConfig.DEBUG){
             //TODO search for the difference beetween both methods
-            mSearchWeatherExecutor.scheduleAtFixedRate(new SearchWeather(), 5, 5, TimeUnit.MINUTES);
+            Log.v(MainApp.class.getSimpleName(), "Agendando task");
+            mSearchWeatherExecutor.scheduleAtFixedRate(new SearchWeather(), 0, 5, TimeUnit.MINUTES);
         }else{
             mSearchWeatherExecutor.scheduleWithFixedDelay(new SearchWeather(), 1, 1, TimeUnit.HOURS);
         }
