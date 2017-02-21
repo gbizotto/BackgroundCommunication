@@ -8,9 +8,9 @@ Helps creating background tasks.
 - Start your service:
 <br>
 <code>
-        Intent intent = new Intent(context, CommunicationService.class);
-        intent.putExtra(context.getString(R.string.intent_communication), backgroundCommunication);
-        context.startService(intent);
+        Intent intentService = new Intent(context, CommunicationService.class);
+        intentService.putExtra(context.getString(R.string.intent_communication), backgroundCommunication);
+        context.startService(intentService);
 </code>      
 * Where <code>backgroundCommunication</code> is your class that implements BackgroundCommunication.
 
